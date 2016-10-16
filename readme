@@ -1,0 +1,21 @@
+Introduction to Docker for Java Developers ( A use case driven approach )
+
+Goal of the course: 
+What is docker? Overview
+Docker installation
+    - Ubuntu
+    - Ubuntu on Windows
+    - Mac 
+Basics
+ 1. Images 
+ 2. Containers
+ 3. Docker basic commands
+  
+Use case 1 : Build - > Ship - > Run an nginx instance running an html page.
+Use case 2 : Build - > Ship - > Run an apache instance running an html page.    
+Use case 3 : Build - > Ship - > Run an apache instance running tomcat
+Use case 4 : Build - > Ship - > Run an JDK instance and print "hello World"
+Use case 5 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
+Use case 6 : Run : Run custom image  which was build.
+Use case 7 : Introduction to docker compose and how you can run compose
+Use case 8 : Introduction to docker swarm and how to run clusters using docker.
