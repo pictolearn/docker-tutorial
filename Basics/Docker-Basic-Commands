@@ -1,0 +1,3 @@
+# Once you install docker, try the following command
+# This should output the version of docker
+$ docker version
