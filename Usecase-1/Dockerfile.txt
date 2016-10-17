@@ -1,0 +1,8 @@
+#Author of the Docker File
+MAINTAINER Pictolearn
+
+#FROM specified which image i want to download
+FROM httpd
+
+# Copy the following directory
+COPY pictolearn-sample/ /usr/local/apache2/htdocs/pictolearn 

@@ -1,21 +1,35 @@
-Introduction to Docker for Java Developers ( A use case driven approach )
-
 Goal of the course: 
 What is docker? Overview
 Docker installation
     - Ubuntu
     - Ubuntu on Windows
     - Mac 
+Git installation
 Basics
- 1. Images 
- 2. Containers
- 3. Docker basic commands
+ 1. Images.
+ 2. Containers.
+ 3. Docker basic commands.
+ 4. Docker hub and searching within docker hub.
   
-Use case 1 : Build - > Ship - > Run an nginx instance running an html page.
-Use case 2 : Build - > Ship - > Run an apache instance running an html page.    
-Use case 3 : Build - > Ship - > Run an apache instance running tomcat
+Use case 1 : Build - > Ship - > Run an httpd instance running an html page.
+
+            a. How to download an image.
+            b. How to run a container from the image.
+            c. How to run a container directly
+            d. How to view containers which are running
+            e. How to view images which are installed.
+            f. Removing a container
+            g. Removing images
+
+
+Use case 2 : Build - > Ship - > Run an nginx instance running an html page.    
+Use case 3 : Build - > Ship - > Run a tomcat instance
 Use case 4 : Build - > Ship - > Run an JDK instance and print "hello World"
-Use case 5 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
-Use case 6 : Run : Run custom image  which was build.
-Use case 7 : Introduction to docker compose and how you can run compose
-Use case 8 : Introduction to docker swarm and how to run clusters using docker.
+Use case 5 : Commit image to docker repository
+Use case 6 : Pull image from docker repository
+Use case 7 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
+Use case 8 : Run : Run custom image  which was build.
+Use case 9 : Commit image to docker repository
+Use case 10 : Pull image from docker repository
+Use case 11 : Introduction to docker compose and how you can run compose
+Use case 12 : Introduction to docker swarm and how to run clusters using docker
