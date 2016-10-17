@@ -18,18 +18,32 @@ Use case 1 : Build - > Ship - > Run an httpd instance running an html page.
             c. How to run a container directly
             d. How to view containers which are running
             e. How to view images which are installed.
-            f. Removing a container
-            g. Removing images
+            f. Stopping a container
+            g. Starting a container
+            h. Removing a container
+            i. Removing images.
+            
+Recap
 
+Use case 2 : Build - > Ship - > Run an nginx instance running an html page.
 
-Use case 2 : Build - > Ship - > Run an nginx instance running an html page.    
+Recap     
+
 Use case 3 : Build - > Ship - > Run a tomcat instance
+
+Recap 
+
 Use case 4 : Build - > Ship - > Run an JDK instance and print "hello World"
+
+Recap
+
 Use case 5 : Commit image to docker repository
+Recap
 Use case 6 : Pull image from docker repository
+Recap
+
 Use case 7 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
 Use case 8 : Run : Run custom image  which was build.
-Use case 9 : Commit image to docker repository
-Use case 10 : Pull image from docker repository
-Use case 11 : Introduction to docker compose and how you can run compose
-Use case 12 : Introduction to docker swarm and how to run clusters using docker
+Use case 9 : Continuous integration with Git and Docker.
+Use case 10 : Introduction to docker compose and how you can run compose
+Use case 11 : Introduction to docker swarm and how to run clusters using docker
