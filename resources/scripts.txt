@@ -7,3 +7,6 @@ docker commit <container-id><repository-name>/<image-name>:<tag>
 docker push <repository-name>/<image-name>:<tag>
 docker inspect <container-name>
 docker inspect <image-name>
+
+#Container volume is the logs directory for example or war directory
+docker run -itd -P -v <host-volume-relative-path>:<container-volume>  <container-name>

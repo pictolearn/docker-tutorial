@@ -23,6 +23,7 @@ Use case 1 : Build - > Ship - > Run an httpd instance running an html page.
             h. Removing a container
             i. Removing images.
             j. docker logs.
+            k. running on a random port
             
 Recap
 
@@ -38,7 +39,7 @@ Use case 2 : Build - > Ship - > Run an nginx instance running an html page.
             h. Removing a container
             i. Removing images.
             j. docker logs.
-
+            k. running on a random port (-P)
 Recap     
 
 Use case 3 : Build - > Ship - > Run a tomcat instance
@@ -66,8 +67,8 @@ Use case 5 : Docker create another image with the war file using the image creat
             b. Run a container, login to the container, change some setting
             c. docker commit a container as an image
             d. docker push
+            e. docker inspect container and image. (docker inspect --format='{{.Id}}' 1c6c4ba72862)
 
-Use case 6 : Continuous integration with Git and Docker.
-
+Use case 6: Mounting logs to the host machines
 Use case 7 : Introduction to docker compose and how you can run compose to run docker machines
 Use case 8 : Introduction to docker swarm and how to run clusters using docker

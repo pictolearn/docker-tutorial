@@ -1,6 +1,6 @@
 # This file is used to create a docker image.
 # The image name created in the previous use case.
-FROM pictolearn/test:1.0
+FROM pictolearn/test:2.0
 
 # Add deployment
 COPY docker-spring-mvc.war /opt/tomcat/webapps/ROOT.war
@@ -12,7 +12,6 @@ ENV JAVA_OPTS="-Xms1024m -Xmx1024m -Xss8192k -XX:PermSize=500m -XX:CMSInitiating
 
 EXPOSE 8080
 EXPOSE 8009
-VOLUME "/opt/tomcat/webapps"
 
 #The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
 WORKDIR /opt/tomcat
