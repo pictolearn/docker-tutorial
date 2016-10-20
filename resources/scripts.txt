@@ -1,0 +1,3 @@
+docker build -t <image-name> <location-of-Dockerfile>
+docker run -it -d -p<host-port>:<container-port> --name <container-name> <image-name>
+docker exec -it <container-name> <entry-point> 
