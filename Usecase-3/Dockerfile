@@ -6,4 +6,4 @@ FROM tomcat
 MAINTAINER Pictolearn
 
 # Copy the following directory
-#COPY pictolearn-sample/ /usr/share/nginx/html/pictolearn 
+COPY spring-mvc-docker-sample.war /opt/tomcat/webapps/ROOT.war
