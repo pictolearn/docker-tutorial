@@ -1,3 +1,9 @@
 docker build -t <image-name> <location-of-Dockerfile>
 docker run -it -d -p<host-port>:<container-port> --name <container-name> <image-name>
 docker exec -it <container-name> <entry-point> 
+docker login 
+docker tag <currentimage>:<tag> <repository-name>/<image-name>:<tag>
+docker commit <container-id><repository-name>/<image-name>:<tag>
+docker push <repository-name>/<image-name>:<tag>
+docker inspect <container-name>
+docker inspect <image-name>
