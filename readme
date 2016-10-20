@@ -55,7 +55,19 @@ Use case 3 : Build - > Ship - > Run a tomcat instance
             j. docker logs.
 
 Use case 4 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
-Use case 5 : Run : Run custom image  which was build.
+            a. Log into the terminal show the installation of the utilities 
+            b. docker tag the build
+            c. docker tag
+            d. docker login and creds stored in WINDOWS C:\Users\<username>\.docker\config.json and in MAC/UNIX in ~/.docker
+            e. docker push
+                        
+Use case 5 : Docker create another image with the war file using the image created in usecase 4
+            a. Create another image from the image in Use case 4
+            b. Run a container, login to the container, change some setting
+            c. docker commit a container as an image
+            d. docker push
+
 Use case 6 : Continuous integration with Git and Docker.
-Use case 7 : Introduction to docker compose and how you can run compose
+
+Use case 7 : Introduction to docker compose and how you can run compose to run docker machines
 Use case 8 : Introduction to docker swarm and how to run clusters using docker
