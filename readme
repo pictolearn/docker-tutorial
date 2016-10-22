@@ -5,6 +5,7 @@ Docker installation
     - Ubuntu on Windows
     - Mac 
 Git installation
+Visual Studio Code with Docker plugin.
 Basics
  1. Images.
  2. Containers.
@@ -69,6 +70,12 @@ Use case 5 : Docker create another image with the war file using the image creat
             d. docker push
             e. docker inspect container and image. (docker inspect --format='{{.Id}}' 1c6c4ba72862)
 
-Use case 6: Mounting logs to the host machines
-Use case 7 : Introduction to docker compose and how you can run compose to run docker machines
+Use case 6 : Mounting logs to the host machines
+Use case 7 : Using Docker machine 
+Use case 7 : Microservices with docker-compose 
+
+                a. Create a simple microservice with nginx- AngularJS2, Spring-MVC-Hibernate-MYSQL and spawn a container with docker-compose.
+                b. Display remote debugging inside the container.
+                c. Hot deploy a container.
+
 Use case 8 : Introduction to docker swarm and how to run clusters using docker

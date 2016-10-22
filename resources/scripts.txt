@@ -10,3 +10,25 @@ docker inspect <image-name>
 
 #Container volume is the logs directory for example or war directory
 docker run -itd -P -v <host-volume-relative-path>:<container-volume>  <container-name>
+
+#docker-machine commands
+docker-machine version
+
+#Version of docker-machine
+docker-machine ls
+
+#Create a docker-machine
+docker-machine create --driver virtualbox <machine-name>
+
+#docker-machine ip default provides the ip of the name of machine "default"
+docker-machine ip default
+
+# Telling docker to talk to the new machine
+docker-machine env default
+
+#Stop docker-machine
+docker-machine stop default
+
+#Start docker-machine
+docker-machine start default
+
