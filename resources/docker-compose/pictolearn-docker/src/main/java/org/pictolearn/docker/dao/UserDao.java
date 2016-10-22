@@ -20,10 +20,9 @@ public class UserDao {
   private Session getSession() {
     return _sessionFactory.getCurrentSession();
   }
-
-  public void save(User user) {
-    getSession().save(user);
-    return;
+  
+  public Long save(User user) {
+    return (Long) getSession().save(user);
   }
   
   public void delete(User user) {

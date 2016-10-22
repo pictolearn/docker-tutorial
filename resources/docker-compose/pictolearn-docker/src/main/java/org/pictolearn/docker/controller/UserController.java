@@ -40,18 +40,19 @@ public class UserController {
 			User user = userDao.getByEmail(email);
 			return user;
 		} catch (Exception ex) {
-			logger.error("Error find the user by email : {} ", email);
+			logger.error("Error find the user by email : {} ", email,  ex);
 			return new User();
 		}
 	}
 
 	@RequestMapping(value = "/add")
 	@ResponseBody
-	public String create(@RequestBody User user) {
+	public String add(@RequestBody User user) {
 		try {
-			userDao.save(user);
+			long id = userDao.save(user);
+			logger.debug("User has been saved successfully with id:{}", id);
 		} catch (Exception ex) {
-			return ex.getMessage();
+			logger.error("Error find the user by email", ex);
 		}
 		return SUCCESS;
 	}
