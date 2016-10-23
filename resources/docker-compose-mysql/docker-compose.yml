@@ -1,0 +1,18 @@
+version: '2'
+services:
+  mysql:
+    image: mysql
+    ports: ["3306:3306"]
+    hostname: mysql
+    environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=Users
+  web:
+    build: docker-mysql-connector
+    image: docker-mysql-connector
+    hostname: web
+    tty: true
+    links:
+      - mysql
+    environment:
+      - DB_PORT=tcp://mysql:3306  
