@@ -12,6 +12,8 @@ services:
     image: docker-mysql-connector
     hostname: web
     tty: true
+    depends_on:
+      - mysql
     links:
       - mysql
     environment:

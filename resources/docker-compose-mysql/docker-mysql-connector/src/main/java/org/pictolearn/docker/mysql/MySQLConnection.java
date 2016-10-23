@@ -17,6 +17,7 @@ public class MySQLConnection {
 		for (String envName : env.keySet()) {
 		    System.out.format("%s=%s%n", envName, env.get(envName));
 		}
+		Thread.sleep(10000);
 		String url = "jdbc:mysql://mysql:3306/sys?autoReconnect=false&useSSL=false";
 		String user = "root";
 		String password = "root";
