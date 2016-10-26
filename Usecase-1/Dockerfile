@@ -1,6 +1,6 @@
 #FROM specified which image i want to download
 # Needs to be provided before any other section of code.
-FROM httpd
+FROM httpd:latest
 
 #Author of the Docker File
 MAINTAINER Pictolearn
@@ -9,4 +9,4 @@ MAINTAINER Pictolearn
 COPY httpd.conf /usr/local/apache2/conf
 
 # Copy the following directory
-COPY pictolearn-sample/ /usr/local/apache2/htdocs/pictolearn 
+COPY pictolearn-sample/ /usr/local/apache2/htdocs/pictolearn

@@ -1,6 +1,6 @@
 #FROM specified which image i want to download
 # Needs to be provided before any other section of code.
-FROM tomcat
+FROM tomcat:8.0
 
 #Author of the Docker File
 MAINTAINER Pictolearn

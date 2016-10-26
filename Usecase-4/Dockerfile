@@ -2,15 +2,20 @@
 # UBUNTU/CENTOS - > TOMCAT 7.x -> JDK 1.7 with all the updates, curl, vim
 FROM ubuntu:16.04
 
+#Author of the file
+MAINTAINER pictolearn
+
+
 #Download the latest version of 7.x
 ENV TOMCAT_VERSION 7.0.72
 
 # Run an update to get all the security patches
 RUN apt-get update && apt-get -y upgrade
 
-#Install curl/vim incase you want to debug
+#Install curl/vim incase you want to debug. VIM - vi editor, curl is a utility which acts as http client which can be run from the unix prompt.
 RUN apt-get -y install software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
+
 RUN apt-get -y update
 RUN apt-get -y install curl
 RUN apt-get -y install vim

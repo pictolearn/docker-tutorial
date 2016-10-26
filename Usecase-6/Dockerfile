@@ -1,6 +1,6 @@
 # This file is used to create a docker image.
 # The image name created in the previous use case.
-FROM pictolearn/test:1.0
+FROM pictolearn/balas-tomcat:1.0
 
 #Set Catalina HOME and JAVA_OPTS
 ENV CATALINA_HOME /opt/tomcat
@@ -10,7 +10,9 @@ ENV JAVA_OPTS="-Xms1024m -Xmx1024m -Xss8192k -XX:PermSize=500m -XX:CMSInitiating
 EXPOSE 8080
 EXPOSE 8009
 
-# Need a war file from the host to be mounted you can do so here.
+# Need a war file from the host to be mounted you can do so here. This instruction tells docker that content in those directories does not go in images and 
+# can be accessed from other containers using the --volumes-from command line parameter. You have to run the container using -v 
+#/path/on/host:/path/in/container to access directories from the host.
 VOLUME "/opt/tomcat/webapps"
 VOLUME "/opt/tomcat/logs"
 

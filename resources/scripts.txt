@@ -1,15 +1,64 @@
+
+# Build an image
 docker build -t <image-name> <location-of-Dockerfile>
-docker run -it -d -p<host-port>:<container-port> --name <container-name> <image-name>
-docker exec -it <container-name> <entry-point> 
+
+# run an image or run a container directly from a specific image
+docker run -it -d -p<host-port>:<container-port> --name <container-name> <image-name>:tag
+
+-i (interactive)
+-t (TTY)
+-d (Detached) : Run it in detached mode or else the life time of the container will be only as long as you run the terminal.
+-P : Docker assigned default ports which will access the required port in the container (meaning the host machine can get assigned 32769 : pointing to default port of the image)
+--name : represents a default name, if it is not specified the docker daemon will allocate a unique name
+image-name : specifies the image to download from the repostory
+tag : defaults to latest, a version for the given image can be specified.
+
+
+# allows you to view the logs in the container
+docker logs <container-id>
+
+# List all containers running and stopped
+docker ps -a
+
+# List all containers running
+docker ps
+
+# List all images available
+docker images
+
+# stop a specified container
+docker stop <container-id>
+
+# stop all containers
+docker stop $(docker ps -a -q)
+
+# remove image (note: no containers for this image should be running)
+docker rmi <image-id>
+
+# remove all images
+docker rmi $(docker images -a)
+
+#Remove a specific container
+docker rm <container-id>
+
+#Remove all containers
+docker rm $(docker ps -a -q)
+
+# log in to the shell of the container. Typically entry-point refers to /bin/bash
+docker exec -it <container-name> <entry-point>
+
+
 docker login 
 docker tag <currentimage>:<tag> <repository-name>/<image-name>:<tag>
-docker commit <container-id><repository-name>/<image-name>:<tag>
+docker commit <container-id> <repository-name>/<image-name>:<tag>
 docker push <repository-name>/<image-name>:<tag>
 docker inspect <container-name>
 docker inspect <image-name>
 
+
 #Container volume is the logs directory for example or war directory
-docker run -itd -P -v <host-volume-relative-path>:<container-volume>  <container-name>
+docker run -itd -P -v <host-volume-absolute-path>:<container-volume-path>  <container-name>
+
 
 #docker-machine commands
 docker-machine version
