@@ -17,6 +17,9 @@ tag : defaults to latest, a version for the given image can be specified.
 # allows you to view the logs in the container
 docker logs <container-id>
 
+# Allow you to tail logs
+docker logs -ft <container-id>
+
 # List all containers running and stopped
 docker ps -a
 
