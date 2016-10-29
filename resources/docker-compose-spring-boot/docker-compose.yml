@@ -19,4 +19,4 @@ services:
     links:
       - mysql
     environment:
-      - DB_PORT=tcp://mysql:8888  
+      - DB_PORT=tcp://mysql:3306  
