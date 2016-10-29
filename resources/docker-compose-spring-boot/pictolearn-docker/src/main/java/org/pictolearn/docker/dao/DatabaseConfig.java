@@ -4,6 +4,9 @@ import java.util.Properties;
 
 import javax.sql.DataSource;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.pictolearn.docker.controller.UserController;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,6 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @Configuration
 @EnableTransactionManagement
 public class DatabaseConfig {
+	
+  private static final Logger logger = LogManager.getLogger(DatabaseConfig.class);
 
   @Value("${db.driver}")
   private String DB_DRIVER;
@@ -47,12 +52,14 @@ public class DatabaseConfig {
     dataSource.setUrl(DB_URL);
     dataSource.setUsername(DB_USERNAME);
     dataSource.setPassword(DB_PASSWORD);
+    logger.debug("DB_URL " + DB_URL);
     return dataSource;
   }
 
   @Bean
   public LocalSessionFactoryBean sessionFactory() {
     LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+    logger.debug("DB_URL " + DB_URL);
     sessionFactoryBean.setDataSource(dataSource());
     sessionFactoryBean.setPackagesToScan(ENTITYMANAGER_PACKAGES_TO_SCAN);
     Properties hibernateProperties = new Properties();

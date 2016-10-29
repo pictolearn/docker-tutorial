@@ -1,18 +1,22 @@
 version: '2'
 services:
-  db:
-    image: mysql:latest
+  mysql:
+    image: mysql
     ports: ["8888:3306"]
-    hostname: db
+    hostname: mysql
     environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=Users
   web:
     build: pictolearn-docker
     image: pictolearn-docker
-    ports: ["8080:8080"]
     hostname: web
+    tty: true
+#    volumes:
+#      - ./logs:/var/lib/ghost/config.js
     depends_on:
       - mysql
     links:
       - mysql
+    environment:
+      - DB_PORT=tcp://mysql:8888  

@@ -84,3 +84,35 @@ docker-machine stop default
 #Start docker-machine
 docker-machine start default
 
+# Removing a docker machine
+docker-machine rm <machine-name>
+
+# Runs the container
+docker-compose up
+
+# Runs in detached mode
+docker-compose up -d
+
+# Builds the image
+docker-compose build
+
+#Stops the container
+docker-compose stop <service-name>
+
+#Starts the container
+docker-compose start <service-name>
+
+# Equivalent to docker exec
+docker-compose run <service-name> /bin/bash 
+
+# Build a specific image.
+docker-compose up --build
+
+# View logs
+docker-compose logs <service-name>
+
+# Tail logs
+docker-compose  logs -ft <service-name>
+
+# Update specific container
+docker-compose update -d --no-deps <service-name>

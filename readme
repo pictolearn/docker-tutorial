@@ -43,7 +43,9 @@ Use case 2 : Build - > Ship - > Run an nginx instance running an html page.
             k. running on a random port (-P)
 Recap     
 
-Use case 3 : Build - > Ship - > Run a tomcat instance
+Use case 3 : Run a simple java Hello World Program
+
+Use case 4 : Build - > Ship - > Run a tomcat instance
             Show java version
             a. How to download an image.
             b. How to run a container from the image.
@@ -56,14 +58,14 @@ Use case 3 : Build - > Ship - > Run a tomcat instance
             i. Removing images.
             j. docker logs.
 
-Use case 4 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
+Use case 5 : Build - > Ship : Build a custom image contains CENTS OS, JDK 1.7 and Tomcat 7
             a. Log into the terminal show the installation of the utilities 
             b. docker tag the build
             c. docker tag
             d. docker login and creds stored in WINDOWS C:\Users\<username>\.docker\config.json and in MAC/UNIX in ~/.docker
             e. docker push
                         
-Use case 5 : Docker create another image with the war file using the image created in usecase 4
+Use case 6 : Docker create another image with the war file using the image created in usecase 5
             a. Create another image from the image in Use case 4
             b. Run a container, login to the container, change some setting
             c. docker commit a container as an image

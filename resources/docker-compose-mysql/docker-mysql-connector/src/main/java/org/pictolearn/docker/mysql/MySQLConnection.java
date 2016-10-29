@@ -18,7 +18,7 @@ public class MySQLConnection {
 		    System.out.format("%s=%s%n", envName, env.get(envName));
 		}
 		Thread.sleep(10000);
-		String url = "jdbc:mysql://mysql:3306/sys?autoReconnect=false&useSSL=false";
+		String url = "jdbc:mysql://localhost:8888/Users?autoReconnect=false&useSSL=false";
 		String user = "root";
 		String password = "root";
 		System.out.println("Connecting to URL " + url );
