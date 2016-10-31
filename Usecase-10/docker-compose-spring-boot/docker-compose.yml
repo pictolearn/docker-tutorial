@@ -10,10 +10,11 @@ services:
   web:
     build: pictolearn-docker
     image: pictolearn-docker
+    ports: ["5555:8080"]
     hostname: web
     tty: true
-#    volumes:
-#      - ./logs:/var/lib/ghost/config.js
+    volumes:
+      - /Users/AGanesan/docker/docker-tutorial/resources/docker-compose-spring-boot/logs:/usr/local/pictolearn/logs
     depends_on:
       - mysql
     links:
