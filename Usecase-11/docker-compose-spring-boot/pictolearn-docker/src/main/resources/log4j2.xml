@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" name="pictolearn">
+		<Properties>
+			<Property name="log-path">logs</Property>
+		</Properties>
+	
+	<Appenders>
+		<RollingFile name="file-log" fileName="${sys:logPath}/${log-path}/docker-compose-pictolearn.log"
+			filePattern="${log-path}/docker-compose-pictolearn-%d{yyyy-MM-dd}.log">
+			<PatternLayout>
+				<Pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %p %c [%t] %m%n</Pattern>
+			</PatternLayout>
+			<Policies>
+				<TimeBasedTriggeringPolicy interval="1"
+					modulate="true" />
+			</Policies>
+		</RollingFile>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{dd/MMM/yyyy HH:mm:ss,SSS}- %p %c [%t] %m%n" />
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.pictolearn" level="debug" additivity="false">
+			<AppenderRef ref="file-log" />
+			<AppenderRef ref="Console" />
+		</Logger>
+
+		<Root level="warn">
+			<AppenderRef ref="file-log" />
+			<AppenderRef ref="Console" />
+		</Root>
+	</Loggers>
+</Configuration>
