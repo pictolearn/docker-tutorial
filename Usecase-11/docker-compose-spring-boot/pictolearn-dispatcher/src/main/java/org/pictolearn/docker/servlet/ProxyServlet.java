@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.InetAddress;
 import java.net.ProtocolException;
@@ -22,10 +23,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@WebServlet(urlPatterns = "/proxyServlet", loadOnStartup = 1)
+@WebServlet(urlPatterns = "/proxyServlet/*", loadOnStartup = 1)
 public class ProxyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2787920473586060865L;
@@ -35,11 +37,21 @@ public class ProxyServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		super.doGet(request, response);
 
+		String path = request.getRequestURI().substring(request.getContextPath().length());
+		path = path.substring(path.indexOf("/proxyServlet/")+"/proxyServlet/".length(),path.length());
+
+		if(StringUtils.isEmpty(path)){
+			  response.setContentType("text/html");
+			    PrintWriter out = response.getWriter();
+			    out.println("Invalid GET CALL");
+			    out.close();
+			    return;
+		}
 		String ipAddress = getRandomIpAddress(response);
-
-		String url = "http://" + ipAddress + ":8080/" + request.getRequestURI();
+		
+		String url = "http://" + ipAddress + ":8080/" + path;
+		logger.debug("GET url :{} ", url);
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -50,14 +62,27 @@ public class ProxyServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		super.doPost(request, response);
 
+		Object uri = request.getAttribute("uri");
+		String uriStr = StringUtils.EMPTY;
+		if(uri != null){
+			uriStr = (String) uri;
+		}
+		
+		if(StringUtils.isEmpty(uriStr)){
+			  response.setContentType("text/html");
+			    PrintWriter out = response.getWriter();
+			    out.println("Invalid POST CALL");
+			    out.close();
+		}
+		
 		String ipAddress = getRandomIpAddress(response);
-		String url = "http://" + ipAddress + ":8080/" + request.getRequestURI();
+		String url = "http://" + ipAddress + ":8080/" + request.getAttribute("uri");
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("POST");
+		logger.debug("POST url :{} ", url);
 
 		StringBuilder sb = new StringBuilder();
 		for (Entry<String, String[]> e : request.getParameterMap().entrySet()) {
@@ -71,6 +96,7 @@ public class ProxyServlet extends HttpServlet {
 		}
 
 		String urlParameters = sb.toString();
+		logger.debug("POST url paramters :{} ", urlParameters);
 		con.setDoOutput(true);
 		DataOutputStream wr = new DataOutputStream(con.getOutputStream());
 		wr.writeBytes(urlParameters);
@@ -91,24 +117,26 @@ public class ProxyServlet extends HttpServlet {
 	private String getRandomIpAddress(HttpServletResponse response) throws UnknownHostException, IOException {
 		List<String> ipAddr = new ArrayList<>();
 		for (InetAddress addr : InetAddress.getAllByName("web")) {
-			System.out.println("Hostnames " + addr.getHostAddress());
+			logger.debug("Hostnames {}", addr.getHostAddress());
 			ipAddr.add(addr.getHostAddress());
 		}
 		int size = ipAddr.size();
 		if (size < 1) {
-			System.err.println("Size less than 1");
+			logger.error("Size less than 1");
 			response.setStatus(HttpServletResponse.SC_BAD_GATEWAY);
 			response.getWriter().println("Server unavailable");
 		}
 
-		System.out.println("size " + size);
+		logger.debug("Total hosts : {} ", size);
 
 		int random = 0;
 		if (size > 1) {
 			random = ThreadLocalRandom.current().nextInt(0, ipAddr.size() - 1);
 		}
 
-		return ipAddr.get(random);
+		String ipAddrStr = ipAddr.get(random);
+		logger.debug("Returned IP addr : {} ", ipAddrStr);
+		return ipAddrStr;
 	}
 
 	/**

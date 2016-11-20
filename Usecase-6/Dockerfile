@@ -7,7 +7,7 @@ MAINTAINER pictolearn
 
 
 #Download the latest version of 7.x
-ENV TOMCAT_VERSION 7.0.72
+ENV TOMCAT_VERSION 7.0.73
 
 # Run an update to get all the security patches
 RUN apt-get update && apt-get -y upgrade

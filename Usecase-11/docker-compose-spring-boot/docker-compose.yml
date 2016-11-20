@@ -10,7 +10,7 @@ services:
   web:
     build: pictolearn-docker
     image: pictolearn-docker
-   # ports: ["5555:8080"]
+    #ports: ["5555:8080"]
     hostname: web
     tty: true
     volumes:
@@ -25,5 +25,6 @@ services:
   dispatcher:
     build: pictolearn-dispatcher
     image: pictolearn-dispatcher
+    ports: ["1111:8080"]
     depends_on:
       - web

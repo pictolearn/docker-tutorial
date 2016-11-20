@@ -5,7 +5,7 @@
 		</Properties>
 	
 	<Appenders>
-		<RollingFile name="file-log" fileName="${sys:logPath}/${log-path}/docker-compose-dispatcher.log"
+		<RollingFile name="file-log" fileName="${sys:CATALINA_HOME}/${log-path}/docker-compose-dispatcher.log"
 			filePattern="${log-path}/docker-compose-dispatcher-%d{yyyy-MM-dd}.log">
 			<PatternLayout>
 				<Pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %p %c [%t] %m%n</Pattern>

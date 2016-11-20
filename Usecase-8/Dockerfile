@@ -1,6 +1,6 @@
 # This file is used to create a docker image.
 # The image name created in the previous use case.
-FROM pictolearn/balas-tomcat:1.0
+FROM pictolearn/mytomcat-7.0.73-jdk7
 
 #Set Catalina HOME and JAVA_OPTS
 ENV CATALINA_HOME /opt/tomcat

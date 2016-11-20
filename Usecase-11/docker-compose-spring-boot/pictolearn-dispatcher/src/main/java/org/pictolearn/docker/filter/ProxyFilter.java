@@ -11,14 +11,20 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @WebFilter(filterName="proxyFilter")
 public class ProxyFilter implements Filter {
+	
+	private static final Logger logger = LogManager.getLogger(ProxyFilter.class);
 
 	public void destroy() {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+	    logger.debug("Proxy filter");
 		HttpServletRequest req = (HttpServletRequest) request;
 		request.setAttribute("uri", req.getRequestURI().substring(req.getContextPath().length()));
 		request.getRequestDispatcher("/ProxyServlet").forward(request, response);

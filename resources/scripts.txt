@@ -116,3 +116,6 @@ docker-compose  logs -ft <service-name>
 
 # Update specific container
 docker-compose update -d --no-deps <service-name>
+
+# Stop all containers
+docker-compose down
