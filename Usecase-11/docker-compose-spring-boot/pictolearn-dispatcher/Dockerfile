@@ -23,4 +23,4 @@ EXPOSE 8000
 WORKDIR /opt/tomcat
 
 # Launch Tomcat
-CMD ["/opt/tomcat/bin/catalina.sh", "jpda","start"]
+CMD ["/opt/tomcat/bin/catalina.sh", "run"]
