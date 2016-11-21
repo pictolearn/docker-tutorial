@@ -1,3 +1,4 @@
-Use case 6 : 
+Use case 7 : 
 
-Create an image consisting of UBUNTU with the necessary version of curl, vim , JDK and tomcat for use by teams around the company. Push the image to the repository.
+Use an image create in use case 6 to deploy a war file.
+Demonstrates use of custom images for shipping to teams.

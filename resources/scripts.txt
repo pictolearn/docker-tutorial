@@ -119,3 +119,6 @@ docker-compose update -d --no-deps <service-name>
 
 # Stop all containers
 docker-compose down
+
+#Remove errored out images
+docker rmi $(docker images | grep "^<none>" | awk "{print $3}")

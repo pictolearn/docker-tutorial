@@ -1,4 +1,0 @@
-Use case 10 : 
-
-1. Using docker-machine
-2. Docker compose app spawning multiple containers, one for nginx , multiple spring boot and 1 my sql containers

@@ -9,8 +9,8 @@ services:
         - MYSQL_DATABASE=Users
   web:
     build: pictolearn-docker
-    image: pictolearn-docker
-    ports: ["5555:8080"]
+    image: pictolearn-web
+    #ports: ["5555:8080"]
     hostname: web
     tty: true
     volumes:
@@ -21,3 +21,10 @@ services:
       - mysql
     environment:
       - DB_PORT=tcp://mysql:3306  
+  
+  dispatcher:
+    build: pictolearn-dispatcher
+    image: pictolearn-dispatcher
+    ports: ["1111:8080"]
+    depends_on:
+      - web

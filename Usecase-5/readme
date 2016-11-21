@@ -1,3 +1,5 @@
-Use case 5 : 
+Use case 6 : 
 
-Deploy a war project in a tomcat container. Also find out how to remote debug tomcat container.
+Create an image consisting of UBUNTU with the necessary version of curl, vim , JDK and tomcat for use by teams around the company. 
+Tag the image
+Push the image to the repository.
