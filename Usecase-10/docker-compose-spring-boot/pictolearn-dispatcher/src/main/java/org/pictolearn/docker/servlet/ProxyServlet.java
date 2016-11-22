@@ -77,7 +77,7 @@ public class ProxyServlet extends HttpServlet {
 		String ipAddress = getRandomIpAddress(response);
 		
 		response.addHeader("WEB-HOST", ipAddress);
-		String url = "http://" + ipAddress + ":8080/" + request.getAttribute("uri");
+		String url = "http://" + ipAddress + ":8080/" + path;
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();

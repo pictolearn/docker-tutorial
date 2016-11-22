@@ -122,3 +122,9 @@ docker-compose down
 
 #Remove errored out images
 docker rmi $(docker images | grep "^<none>" | awk "{print $3}")
+
+
+#Remove all images and rebuild images with docker-compose
+docker-compose rm -f
+docker-compose pull
+docker-compose up --build -d
