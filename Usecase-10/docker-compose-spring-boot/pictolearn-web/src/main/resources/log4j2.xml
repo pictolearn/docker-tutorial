@@ -5,8 +5,8 @@
 		</Properties>
 	
 	<Appenders>
-		<RollingFile name="file-log" fileName="${sys:logPath}/${log-path}/docker-compose-pictolearn.log"
-			filePattern="${log-path}/docker-compose-pictolearn-%d{yyyy-MM-dd}.log">
+		<RollingFile name="file-log" fileName="${sys:PICTOLEARN_HOME}/${log-path}/pictolearn-web.log"
+			filePattern="${sys:PICTOLEARN_HOME}/pictolearn-web-%d{yyyy-MM-dd}.log">
 			<PatternLayout>
 				<Pattern>%d{dd/MMM/yyyy HH:mm:ss,SSS}- %p %c [%t] %m%n</Pattern>
 			</PatternLayout>

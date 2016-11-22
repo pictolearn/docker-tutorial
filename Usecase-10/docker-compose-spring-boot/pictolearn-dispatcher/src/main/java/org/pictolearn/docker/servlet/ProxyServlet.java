@@ -24,15 +24,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @WebServlet(urlPatterns = "/proxyServlet/*", loadOnStartup = 1)
 public class ProxyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2787920473586060865L;
 
-	private static final Logger logger = LogManager.getLogger(ProxyServlet.class);
+	private static final Logger logger = LoggerFactory.getLogger(ProxyServlet.class);
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
