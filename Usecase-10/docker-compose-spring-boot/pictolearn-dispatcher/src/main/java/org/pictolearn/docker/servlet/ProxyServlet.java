@@ -40,7 +40,7 @@ public class ProxyServlet extends HttpServlet {
 
 		String path = request.getRequestURI().substring(request.getContextPath().length());
 		path = path.substring(path.indexOf("/proxyServlet/")+"/proxyServlet/".length(),path.length());
-
+		logger.debug("Path to query for GET Request: {}  ", path);
 		if(StringUtils.isEmpty(path)){
 			  response.setContentType("text/html");
 			    PrintWriter out = response.getWriter();
@@ -56,6 +56,7 @@ public class ProxyServlet extends HttpServlet {
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 		con.setRequestMethod("GET");
+		response.addHeader("WEB-HOST", ipAddress);
 		sendResponse(response, con);
 	}
 
@@ -63,20 +64,19 @@ public class ProxyServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		Object uri = request.getAttribute("uri");
-		String uriStr = StringUtils.EMPTY;
-		if(uri != null){
-			uriStr = (String) uri;
-		}
-		
-		if(StringUtils.isEmpty(uriStr)){
+		String path = request.getRequestURI().substring(request.getContextPath().length());
+		path = path.substring(path.indexOf("/proxyServlet/")+"/proxyServlet/".length(),path.length());
+		logger.debug("Path to query for POST Request: {}  ", path);
+		if(StringUtils.isEmpty(path)){
 			  response.setContentType("text/html");
 			    PrintWriter out = response.getWriter();
-			    out.println("Invalid POST CALL");
+			    out.println("Invalid POST CALL empty URI");
 			    out.close();
+			    return;
 		}
-		
 		String ipAddress = getRandomIpAddress(response);
+		
+		response.addHeader("WEB-HOST", ipAddress);
 		String url = "http://" + ipAddress + ":8080/" + request.getAttribute("uri");
 
 		URL obj = new URL(url);

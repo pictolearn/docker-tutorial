@@ -13,8 +13,8 @@ services:
     #ports: ["5555:8080"]
     hostname: web
     tty: true
-    volumes:
-      - /Users/AGanesan/docker/docker-tutorial/resources/docker-compose-spring-boot/logs:/usr/local/pictolearn/logs
+  #  volumes:
+  #    - /Users/AGanesan/docker/docker-tutorial/resources/docker-compose-spring-boot/logs:/usr/local/pictolearn/logs
     depends_on:
       - mysql
     links:
@@ -26,5 +26,10 @@ services:
     build: pictolearn-dispatcher
     image: pictolearn-dispatcher
     ports: ["1111:8080"]
+    hostname: dispatcher
+    tty: true
+    environment:
+      - CATALINE_BASE=/opt/tomcat
+      - CATALINE_HOME=/opt/tomcat
     depends_on:
       - web
