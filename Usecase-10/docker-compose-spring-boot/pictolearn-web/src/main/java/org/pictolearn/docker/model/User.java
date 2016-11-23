@@ -66,5 +66,18 @@ public class User implements Serializable{
   public void setName(String value) {
     this.name = value;
   }
+
+@Override
+public String toString() {
+	StringBuilder builder = new StringBuilder();
+	builder.append("User [id=");
+	builder.append(id);
+	builder.append(", email=");
+	builder.append(email);
+	builder.append(", name=");
+	builder.append(name);
+	builder.append("]");
+	return builder.toString();
+}
   
 } // class User

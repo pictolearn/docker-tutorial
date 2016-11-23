@@ -25,7 +25,7 @@ public class UserController {
 	@ResponseBody
 	public String delete(@PathVariable("id") long id) {
 		try {
-			logger.debug("Deleting user id : {}" ,id);
+			logger.debug("Deleting user id : {}", id);
 			User user = new User(id);
 			userDao.delete(user);
 		} catch (Exception ex) {
@@ -34,28 +34,16 @@ public class UserController {
 		return SUCCESS;
 	}
 
-	@RequestMapping(value = "/findByEmail/{email}")
-	@ResponseBody
-	public User findByEmail(@PathVariable("email") String email) {
-		try {
-			logger.debug("Finding user with email : {}" , email);
-			User user = userDao.getByEmail(email);
-			return user;
-		} catch (Exception ex) {
-			logger.error("Error find the user by email : {} ", email,  ex);
-			return new User();
-		}
-	}
-	
 	@RequestMapping(value = "/findById/{id}")
 	@ResponseBody
 	public User findById(@PathVariable("id") String id) {
 		try {
-			logger.debug("Finding user with id : {}" , id);
+			logger.debug("Finding user with id : {}", id);
 			User user = userDao.getById(Long.valueOf(id));
+			logger.debug("User {}", user);
 			return user;
 		} catch (Exception ex) {
-			logger.error("Error find the user by id : {} ", id,  ex);
+			logger.error("Error find the user by id : {} ", id, ex);
 			return new User();
 		}
 	}
@@ -64,9 +52,22 @@ public class UserController {
 	@ResponseBody
 	public String add(@RequestBody User user) {
 		try {
-			logger.debug("Add user id : {}" ,user.getEmail());
+			logger.debug("Add user id : {}", user.getEmail());
 			long id = userDao.save(user);
 			logger.debug("User has been saved successfully with id:{}", id);
+		} catch (Exception ex) {
+			logger.error("Error find the user by email", ex);
+		}
+		return SUCCESS;
+	}
+
+	@RequestMapping(value = "/update")
+	@ResponseBody
+	public String update(@RequestBody User user) {
+		try {
+			logger.debug("Update user id : {}", user.getId());
+			userDao.update(user);
+			logger.debug("User has been updated successfully with id:{}", user.getId());
 		} catch (Exception ex) {
 			logger.error("Error find the user by email", ex);
 		}

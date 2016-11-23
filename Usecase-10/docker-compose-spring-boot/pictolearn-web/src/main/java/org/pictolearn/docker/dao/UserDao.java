@@ -43,7 +43,7 @@ public class UserDao {
   }
 
   public User getById(long id) {
-    return (User) getSession().load(User.class, id);
+    return (User) getSession().get(User.class, id);
   }
 
   public void update(User user) {
