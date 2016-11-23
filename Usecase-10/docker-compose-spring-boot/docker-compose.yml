@@ -10,7 +10,7 @@ services:
   web:
     build: pictolearn-web
     image: pictolearn-web
-    ports: ["5555:8080"]
+   # ports: ["5555:8080"]
     hostname: web
     tty: true
   #  volumes:
