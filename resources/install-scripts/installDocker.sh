@@ -16,4 +16,5 @@ sudo apt-get -y install docker-engine
 sudo apt-get -y install docker-compose
 sudo groupadd docker
 sudo usermod -aG docker $USER
+sudo service docker restart
 sudo reboot

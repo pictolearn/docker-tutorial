@@ -6,3 +6,4 @@ sudo apt-get -y autoclean
 sudo rm -rf /var/lib/docker
 sudo rm /etc/apparmor.d/docker
 sudo groupdel docker
+sudo reboot
