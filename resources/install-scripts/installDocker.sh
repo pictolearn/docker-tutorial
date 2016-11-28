@@ -1,4 +1,6 @@
 #!/bin/bash
+
+# Generic instructions to upgrade UBUNTU and add the repository URL for docker.
 sudo apt-get update
 sudo apt-get install apt-transport-https ca-certificates
 sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
@@ -7,4 +9,11 @@ sudo apt-get update
 sudo apt-cache policy docker-engine
 sudo apt-get update
 sudo apt-get install linux-image-extra-$(uname -r) linux-image-extra-virtual
+
+# Instructions to install docker
+sudo apt-get -y install docker
+sudo apt-get -y install docker-engine
+sudo apt-get -y install docker-compose
+sudo groupadd docker
+sudo usermod -aG docker $USER
 sudo reboot
