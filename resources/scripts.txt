@@ -12,7 +12,7 @@ docker run -it -d -p<host-port>:<container-port> --name <container-name> <image-
 --name : represents a default name, if it is not specified the docker daemon will allocate a unique name
 image-name : specifies the image to download from the repostory
 tag : defaults to latest, a version for the given image can be specified.
-
+        
 
 # allows you to view the logs in the container
 docker logs <container-id>
@@ -86,6 +86,9 @@ docker-machine start default
 
 # Removing a docker machine
 docker-machine rm <machine-name>
+
+#remove all docker machines
+docker-machine rm -f $(docker-machine ls -q);
 
 # Runs the container
 docker-compose up
