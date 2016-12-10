@@ -47,7 +47,7 @@ Step 7: Stop the container
 -------------------------------------------------------------------
 docker start <container-id>
 
-Step 8: Inspsect the container and image
+Step 8: Inspect the container and image
 -------------------------------------------------------------------
 docker inspect <container-id>
 docker inspect <image-id>
