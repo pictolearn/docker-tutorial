@@ -2,7 +2,7 @@
 #Step 1: Building an image
 #Syntax: docker build -t <image-name> <location of dockerfile>
 -------------------------------------------------------------------
-docker build -t my-httpd .
+docker build -t my-nginx .
 
 #Step 2: View the images
 #Syntax: docker images
@@ -16,11 +16,11 @@ docker images
 # -p : represents the host-port to container-port mapping, if you substitute it with -P you will get a random port allocated by docker
 # --name : represents the name of the container 
 -------------------------------------------------------------------
-docker run -itd --name my-http-container-1 -p 5555:80 my-httpd:latest
-docker run -itd --name my-http-container-2 -p 5556:80 my-httpd:latest
+docker run -itd --name my-nginx-container-1 -p 7777:80 my-nginx:latest
+docker run -itd --name my-nginx-container-2 -p 7778:80 my-nginx:latest
 
 #note if you run this it will NOT run in detached mode.
-docker run -it --name my-http-container-3 -p 5557:80 my-httpd:latest
+docker run -it --name my-nginx-container-2 -p 7779:80 my-httpd:latest
 
 Step 4: View all the containers
 -------------------------------------------------------------------

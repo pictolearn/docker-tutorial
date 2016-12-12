@@ -1,6 +1,6 @@
 #FROM specified which image i want to download
 # Needs to be provided before any other section of code.
-FROM nginx
+FROM nginx:1.10
 
 #Author of the Docker File
 MAINTAINER Pictolearn
