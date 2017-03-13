@@ -5,8 +5,9 @@ FROM httpd:latest
 #Author of the Docker File
 MAINTAINER Pictolearn
 
-# Copy httpd.conf with changes to the root directory
-COPY httpd.conf /usr/local/apache2/conf
 
 # Copy the following directory
 COPY pictolearn-sample/ /usr/local/apache2/htdocs/pictolearn
+
+# Copy httpd.conf with changes to the root directory
+COPY httpd.conf /usr/local/apache2/conf

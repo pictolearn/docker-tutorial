@@ -4,12 +4,16 @@
 -------------------------------------------------------------------
 docker build -t my-httpd .
 
-#Step 2: View the images
+#Step 2: List all the images
 #Syntax: docker images
 -------------------------------------------------------------------
 docker images
 
-#Step 3: Running a container from the image
+#Step 3: Inspect the Image
+------------------------------------------------------------------
+docker inspect <image-id>
+
+#Step 4: Running a container from the image
 #Syntax: docker run -itd --name <container-name> -p <host-port>:<port in container> image-name:tag
 # note in the above syntax:
 # -d : represents (detached mode), note that if you dont run this in detached mode, the life of the container will be the life of the terminal in which you are executing it.
@@ -30,7 +34,11 @@ docker ps
 #Shows all the containers stopped and running
 docker ps -a
 
-Step 5: View Container logs
+Step 6: Inspect the container and image
+-------------------------------------------------------------------
+docker inspect <container-id>
+
+Step 7: View Container logs
 -------------------------------------------------------------------
 
 # View the logs of the container
@@ -39,15 +47,10 @@ docker logs <container-id>
 # Tail the logs of the container
 docker logs -ft <container-id>
 
-Step 6: Stop the container
+Step 8: Stop the container
 -------------------------------------------------------------------
 docker stop <container-id>
 
-Step 7: Stop the container
+Step 9: Stop the container
 -------------------------------------------------------------------
 docker start <container-id>
-
-Step 8: Inspect the container and image
--------------------------------------------------------------------
-docker inspect <container-id>
-docker inspect <image-id>
