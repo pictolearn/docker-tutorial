@@ -22,11 +22,12 @@ docker inspect <image-id>
 -------------------------------------------------------------------
 docker run -itd --name my-http-container-1 -p 5555:80 my-httpd:latest
 docker run -itd --name my-http-container-2 -p 5556:80 my-httpd:latest
+docker run -itd --name my-http-container-with-random-port -P my-httpd:latest
 
 #note if you run this it will NOT run in detached mode.
-docker run -it --name my-http-container-3 -p 5557:80 my-httpd:latest
+docker run -it --name my-http-container-not-detached-mode -p 5557:80 my-httpd:latest
 
-Step 4: View all the containers
+Step 5: View all the containers
 -------------------------------------------------------------------
 # Shows all the containers which are running
 docker ps 
@@ -54,3 +55,21 @@ docker stop <container-id>
 Step 9: Stop the container
 -------------------------------------------------------------------
 docker start <container-id>
+
+Step 10: Remove the container
+-------------------------------------------------------------------
+docker rm <container-id>
+
+Step 10: Remove all the containers and images
+-------------------------------------------------------------------
+#Remove a specific container
+docker rm <container-id>
+
+#Remove all containers
+docker rm $(docker ps -a -q)
+
+# remove image (note: no containers for this image should be running)
+docker rmi <image-id>
+
+# remove all images
+docker rmi $(docker images -a)
