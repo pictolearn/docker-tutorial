@@ -56,12 +56,15 @@ Step 9: Stop the container
 -------------------------------------------------------------------
 docker start <container-id>
 
-Step 10: Remove the container
+Step 10: Logging into the container
 -------------------------------------------------------------------
-docker rm <container-id>
+#Note: The container must be started before we can do this.
+docker exec -it <container-id> /bin/bash
 
-Step 10: Remove all the containers and images
+Step 11: Remove all the containers and images
 -------------------------------------------------------------------
+#Note: To remove an image the corresponding container built from that image will need to be removed.
+
 #Remove a specific container
 docker rm <container-id>
 
@@ -72,4 +75,4 @@ docker rm $(docker ps -a -q)
 docker rmi <image-id>
 
 # remove all images
-docker rmi $(docker images -a)
+docker rmi $(docker images -q)

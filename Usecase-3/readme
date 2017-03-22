@@ -1,3 +1,8 @@
 Use case 3 : 
 
 Deploy a java application in a docker container. Automatic integration of git with the docker hub repository.
+
+1. Copy Docker file as is to the Eclipse Project
+2. Commands to Execute
+
+docker build -t my-java-docker .
