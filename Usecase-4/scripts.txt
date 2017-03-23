@@ -1,0 +1,50 @@
+
+#Step 1: Building an image
+#Syntax: docker build -t <image-name> <location of dockerfile>
+-------------------------------------------------------------------
+docker build -t spring-mvc-image .
+
+#Step 2: List all the images
+#Syntax: docker images
+-------------------------------------------------------------------
+docker images
+
+#Step 3: Running a container from the image
+#Syntax: docker run -itd --name <container-name> -p <host-port>:<port in container> image-name:tag
+# note in the above syntax:
+# -d : represents (detached mode), note that if you dont run this in detached mode, the life of the container will be the life of the terminal in which you are executing it.
+# -p : represents the host-port to container-port mapping, if you substitute it with -P you will get a random port allocated by docker
+# --name : represents the name of the container 
+-------------------------------------------------------------------
+docker run -itd --name spring-mvc-container-1 -p 5555:80 spring-mvc-image:latest
+docker run -itd --name spring-mvc-container-2 -p 5556:80 spring-mvc-image:latest
+
+Step 4: View all the containers
+-------------------------------------------------------------------
+# Shows all the containers which are running
+docker ps 
+
+#Shows all the containers stopped and running
+docker ps -a
+
+
+Step 5: Logging into the container
+-------------------------------------------------------------------
+#Note: The container must be started before we can do this.
+docker exec -it <container-id> /bin/bash
+
+Step 6: Remove all the containers and images
+-------------------------------------------------------------------
+#Note: To remove an image the corresponding container built from that image will need to be removed.
+
+#Remove a specific container
+docker rm <container-id>
+
+#Remove all containers
+docker rm $(docker ps -a -q)
+
+# remove image (note: no containers for this image should be running)
+docker rmi <image-id>
+
+# remove all images
+docker rmi $(docker images -q)
