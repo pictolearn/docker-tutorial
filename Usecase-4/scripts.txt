@@ -16,8 +16,8 @@ docker images
 # -p : represents the host-port to container-port mapping, if you substitute it with -P you will get a random port allocated by docker
 # --name : represents the name of the container 
 -------------------------------------------------------------------
-docker run -itd --name spring-mvc-container-1 -p 5555:80 spring-mvc-image:latest
-docker run -itd --name spring-mvc-container-2 -p 5556:80 spring-mvc-image:latest
+docker run -itd --name spring-mvc-container-1 -p 5555:8080 spring-mvc-image:latest
+docker run -itd --name spring-mvc-container-2 -p 5556:8080 spring-mvc-image:latest
 
 Step 4: View all the containers
 -------------------------------------------------------------------
