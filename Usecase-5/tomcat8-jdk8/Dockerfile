@@ -34,8 +34,7 @@ ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 RUN wget --quiet --no-cookies http://apache.mirrors.tds.net/tomcat/tomcat-8/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
-rm /tmp/tomcat.tgz  
-#&& \
-#rm -rf /opt/tomcat/webapps/examples && \
-#rm -rf /opt/tomcat/webapps/docs && \
-#rm -rf /opt/tomcat/webapps/ROOT
+rm /tmp/tomcat.tgz  && \
+rm -rf /opt/tomcat/webapps/examples && \
+rm -rf /opt/tomcat/webapps/docs && \
+rm -rf /opt/tomcat/webapps/ROOT

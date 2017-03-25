@@ -14,4 +14,4 @@ docker build -t spring-mvc-tomcat8-jdk8-image .
 #Syntax: docker run -itd --name <container-name> -p <host-port>:<container-port> <image-name>
 ---------------------------------------------------------------------------------------------
 docker run -itd --name tomcat7-jdk7-container-1 -p 5555:8080 spring-mvc-tomcat7-jdk7-image
-docker run -itd --name tomcat7-jdk7-container-1 -p 5556:8080 spring-mvc-tomcat8-jdk8-image
+docker run -itd --name tomcat8-jdk8-container-2 -p 5556:8080 spring-mvc-tomcat8-jdk8-image
