@@ -1,0 +1,17 @@
+Step 1: Remove the existing pictolearn/tomcat7-jdk7 and pictolearn/tomcat8-jdk8 images
+-------------------------------------------------------------------
+docker rmi pictolearn/tomcat7-jdk7
+docker rmi pictolearn/tomcat8-jdk8
+
+#Step 2: Building an image
+#Syntax: docker build -t <image-name> <location of dockerfile>
+-------------------------------------------------------------------
+docker build -t spring-mvc-tomcat7-jdk7-image .
+docker build -t spring-mvc-tomcat8-jdk8-image .
+
+
+#Step 3: Run a container from the image
+#Syntax: docker run -itd --name <container-name> -p <host-port>:<container-port> <image-name>
+---------------------------------------------------------------------------------------------
+docker run -itd --name tomcat7-jdk7-container-1 -p 5555:8080 spring-mvc-tomcat7-jdk7-image
+docker run -itd --name tomcat7-jdk7-container-1 -p 5556:8080 spring-mvc-tomcat8-jdk8-image

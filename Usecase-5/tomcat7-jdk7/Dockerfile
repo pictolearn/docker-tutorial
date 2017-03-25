@@ -5,9 +5,9 @@ FROM ubuntu:16.04
 #Author of the file
 MAINTAINER pictolearn
 
-
 #Download the latest version of 7.x
-ENV TOMCAT_VERSION 7.0.73
+# Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
+ENV TOMCAT_VERSION 7.0.76
 
 # Run an update to get all the security patches
 RUN apt-get update && apt-get -y upgrade
@@ -16,7 +16,11 @@ RUN apt-get update && apt-get -y upgrade
 RUN apt-get -y install software-properties-common
 RUN add-apt-repository ppa:webupd8team/java
 
-RUN apt-get -y update
+#The below instruction is very important, failing to add this will not allow you to install JDK
+# after the repository has been added.
+RUN apt-get update
+
+#Install CURL and VIM editors
 RUN apt-get -y install curl
 RUN apt-get -y install vim
 
@@ -26,8 +30,6 @@ RUN apt-get -y install oracle-java7-installer
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
-
-
 
 # Get Tomcat
 # notice that i can add the same RUN command across multiple lines
