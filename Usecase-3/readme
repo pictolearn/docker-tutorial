@@ -6,4 +6,3 @@ Deploy a java application in a docker container. Automatic integration of git wi
 1. Copy Docker file as is to the Eclipse Project
 2. Commands to Execute
 
-docker build -t my-java-docker .

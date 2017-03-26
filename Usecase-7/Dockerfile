@@ -1,6 +1,9 @@
 # This file is used to create a docker image.
 # The image name created in the previous use case.
-FROM pictolearn/mytomcat-7.0.73-jdk7
+FROM pictolearn/tomcat7-jdk7
+
+# Add deployment
+COPY docker-spring-mvc.war /opt/tomcat/webapps/ROOT.war
 
 #Set Catalina HOME and JAVA_OPTS
 ENV CATALINA_HOME /opt/tomcat
