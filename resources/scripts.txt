@@ -71,6 +71,8 @@ docker-machine ls
 
 #Create a docker-machine
 docker-machine create --driver virtualbox --virtualbox-disk-size "20000" <machine-name> 
+docker-machine create --driver hyperv  <machine-name>
+docker-machine create -d hyperv --hyperv-virtual-switch "<NameOfVirtualSwitch>" <nameOfNode> 
 
 #docker-machine ip default provides the ip of the name of machine "default"
 docker-machine ip default

@@ -7,14 +7,3 @@ services:
     environment: # specify the password and default database to connect to, note that the default root user will be picked up.
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=Users
-  web: # create an image by the name web
-    build: docker-mysql-connector 
-    image: docker-mysql-connector
-    hostname: web
-    tty: true
-    #depends_on:
-      #- mysql
-    links: #Specifies that this container should start up after mysql is build and has started
-      - mysql
-    environment:
-      - DB_PORT=tcp://mysql:3306  
