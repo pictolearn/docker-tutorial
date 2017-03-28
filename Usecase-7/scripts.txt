@@ -11,7 +11,6 @@ docker images
 
 #Step 3: Run a container from the image with a volume mount
 #Container volume is the logs directory for example or war directory
-Example:  docker run -itd -P -v <host-volume-absolute-path>:<container-volume-path>  --name=<container-name> <image-id>
+Example:  docker run -itd  -p <host-port>:<container-port> -v <host-volume-absolute-path>:<container-volume-path>  --name=<container-name> <image-id>
 ---------------------------------------------------------------------------------------------
-docker run -itd -P -v F:/pictolearn/Docker/logs:/opt/tomcat/logs  --name="tomcat-container-log" spring-mvc-tomcat7-jdk7-volume-sample
-
+docker run -itd  -p 3333:8080  -v F:/pictolearn/Docker/logs:/opt/tomcat/logs -v F:/pictolearn/Docker/webapps:/opt/tomcat/webapps  --name="tomcat-container-log" spring-mvc-tomcat7-jdk7-volume-sample

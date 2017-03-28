@@ -2,9 +2,6 @@
 # The image name created in the previous use case.
 FROM pictolearn/tomcat7-jdk7
 
-# Add deployment
-COPY docker-spring-mvc.war /opt/tomcat/webapps/ROOT.war
-
 #Set Catalina HOME and JAVA_OPTS
 ENV CATALINA_HOME /opt/tomcat
 ENV PATH $PATH:$CATALINA_HOME/bin
