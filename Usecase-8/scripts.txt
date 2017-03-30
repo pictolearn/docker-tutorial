@@ -1,0 +1,52 @@
+
+Manual Reference: https://docs.docker.com/compose/reference/
+
+Step-1 # Builds the image
+-------------------------------------------------------------------
+docker-compose build
+
+docker-compose build <service-name>
+
+#Builds and run the containers
+docker-compose up --build -d
+
+Step-2 # View the image (All started and stopped containers)
+-------------------------------------------------------------------
+docker-compose ps 
+docker-compose ps -a
+
+Step-3 # Run the image in detached/non-detached mode (use -d) 
+-------------------------------------------------------------------
+docker-compose up
+docker-compose up -d
+
+Step-4 # View logs and Tail logs
+-------------------------------------------------------------------
+# View logs
+docker-compose logs <service-name>
+
+# Tail logs
+docker-compose  logs -ft <service-name>
+
+
+Step-5 # View logs and Tail logs
+-------------------------------------------------------------------
+# View logs
+docker-compose logs <service-name>
+
+# Tail logs
+docker-compose  logs -ft <service-name>
+
+
+Step-6 # Login to the container
+-------------------------------------------------------------------
+docker-compose run <service-name> /bin/bash 
+
+
+Step-7 # Stops all containers related to the compose file
+--------------------------------------------------
+docker-compose down
+
+Stop and start specific container
+--------------------------------------------------
+docker-compose stop <service-name>

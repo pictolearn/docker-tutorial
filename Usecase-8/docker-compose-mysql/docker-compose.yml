@@ -1,6 +1,6 @@
-version: '2' #version of Docker-compose
-services:
-  mysql: # create an image by the name mysql
+version: '3.1' #version of Docker-compose
+services: #Specifies the micro-service you want to run
+  db: # create an image by the name mysql
     image: mysql # specify the image to download from docker hub
     ports: ["3306:3306"] # expose ports to docker-machine
     hostname: mysql  #specify the name of a host which can be used by a container running on the same docker machine
@@ -12,9 +12,7 @@ services:
     image: docker-mysql-connector
     hostname: web
     tty: true
-    #depends_on:
-      #- mysql
-    links: #Specifies that this container should start up after mysql is build and has started
-      - mysql
-    environment:
+    depends_on: #Specifies that this container should start up after mysql is build and has started
+      - db
+    environment: #Specifies the port to be used to start up
       - DB_PORT=tcp://mysql:3306  
