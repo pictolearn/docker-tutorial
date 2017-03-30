@@ -1,13 +1,6 @@
-FROM java:8
-MAINTAINER pictolearn
+FROM pictolearn/ubuntu-jdk8
 
-# update packages and install maven
-RUN  \
-  export DEBIAN_FRONTEND=noninteractive && \
-  sed -i 's/# \(.*multiverse$\)/\1/g' /etc/apt/sources.list && \
-  apt-get update && \
-  apt-get -y upgrade && \
-  apt-get install -y maven
+MAINTAINER pictolearn
 
 ADD . /usr/local/docker-mysql-connector
 RUN cd /usr/local/docker-mysql-connector && mvn assembly:assembly
