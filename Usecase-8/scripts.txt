@@ -1,6 +1,32 @@
 
 Manual Reference: https://docs.docker.com/compose/reference/
 
+*****************************************************************
+
+Docker - machine: Windows
+
+*****************************************************************
+
+#Create a docker-machine with a virtual switch
+docker-machine create -d hyperv --hyperv-virtual-switch "VS-1" my-hyperv-vm
+
+#Verify if docker-machine is running on an IP
+docker-machine ls
+
+#Run the following command and whatever output you get run it again
+docker-machine env my-hyperv-vm
+
+#Run the output of the last line of the command which is there before.
+ & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env my-hyperv-vm | Invoke-Expression
+
+#Verify the docker-machine is active.
+docker-machine ls
+
+*****************************************************************
+
+Docker - compose commands to follow (Common for MAC and Windows)
+
+*****************************************************************
 Step-1 # Builds the image
 -------------------------------------------------------------------
 docker-compose build
@@ -28,7 +54,6 @@ docker-compose logs <service-name>
 # Tail logs
 docker-compose  logs -ft <service-name>
 
-
 Step-5 # View logs and Tail logs
 -------------------------------------------------------------------
 # View logs
@@ -37,16 +62,16 @@ docker-compose logs <service-name>
 # Tail logs
 docker-compose  logs -ft <service-name>
 
-
 Step-6 # Login to the container
 -------------------------------------------------------------------
 docker-compose run <service-name> /bin/bash 
 
-
 Step-7 # Stops all containers related to the compose file
 --------------------------------------------------
-docker-compose down
+docker-compose stop
 
-Stop and start specific container
---------------------------------------------------
+#Stop and start specific container
 docker-compose stop <service-name>
+
+#Stop and remove containers
+docker-compose down

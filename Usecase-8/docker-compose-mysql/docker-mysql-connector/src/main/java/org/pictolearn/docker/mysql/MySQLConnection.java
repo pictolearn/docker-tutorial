@@ -24,7 +24,7 @@ public class MySQLConnection {
 			try {
 				
 				// Note the way the mysql container is used here.
-				String url = "jdbc:mysql://mysql:3306/Users?autoReconnect=false&useSSL=false";
+				String url = "jdbc:mysql://db:3306/Users?autoReconnect=false&useSSL=false";
 				String user = "root";
 				String password = "root";
 				System.out.println("Connecting to URL " + url);

@@ -11,8 +11,10 @@ services: #Specifies the micro-service you want to run
     build: docker-mysql-connector 
     image: docker-mysql-connector
     hostname: web
-    tty: true
+    tty: true    
     depends_on: #Specifies that this container should start up after mysql is build and has started
       - db
+    links:
+      - db   
     environment: #Specifies the port to be used to start up
       - DB_PORT=tcp://mysql:3306  
