@@ -2,7 +2,7 @@ version: '3.1' #version of Docker-compose
 services: #Specifies the micro-service you want to run
   db: # create an image by the name mysql
     image: mysql # specify the image to download from docker hub
-    ports: ["3306:3306"] # expose ports to docker-machine
+    ports: ["3306:3306"] # expose ports to docker-machine , same as the EXPOSE command
     hostname: mysql  #specify the name of a host which can be used by a container running on the same docker machine
     environment: # specify the password and default database to connect to, note that the default root user will be picked up.
         - MYSQL_ROOT_PASSWORD=root
@@ -11,10 +11,10 @@ services: #Specifies the micro-service you want to run
     build: docker-mysql-connector 
     image: docker-mysql-connector
     hostname: web
-    tty: true    
+    tty: true   # same as the "-t" option used in docker build "-t" 
     depends_on: #Specifies that this container should start up after mysql is build and has started
       - db
-    links:
+    links:  # you will specify this name or the alias name db:<alias> in the java code to connect, note you will not use localhost
       - db
     environment: #Specifies the environment variables
       - AWS_ACCESS_KEY=123456

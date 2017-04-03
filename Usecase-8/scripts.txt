@@ -1,13 +1,52 @@
+*****************************************************************
+Docker - machine: Windows and MAC
+*****************************************************************
 
-Manual Reference: https://docs.docker.com/compose/reference/
+#Create 2 Docker machines (Remember both are virtual PCs running with different IPs)
+------------------------------------------------------------------------
+
+Windows: docker-machine create -d hyperv --hyperv-virtual-switch "vs-1" hyperv-vm-1
+MAC: docker-machine create --driver virtualbox --virtualbox-disk-size "20000" hyperv-vm-1
+
+Windows: docker-machine create -d hyperv --hyperv-virtual-switch "vs-1" hyperv-vm-2
+MAC: docker-machine create --driver virtualbox --virtualbox-disk-size "20000" hyperv-vm-2
+
+#Verify if docker-machine is running on an IP
+------------------------------------------------------------------------
+docker-machine ip hyperv-vm-1
+docker-machine ip hyperv-vm-2
+
+#Run the following command and whatever output you get run it again
+------------------------------------------------------------------------
+docker-machine env hyperv-vm-1
+docker-machine env hyperv-vm-2
+
+#Run the output of the last line of the command which is there before.
+------------------------------------------------------------------------
+ & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env hyperv-vm-1 | Invoke-Expression
+ & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env hyperv-vm-2 | Invoke-Expression
+
+#Verify the docker-machine is active.
+----------------------------------------
+docker-machine ls
+
+Turning OFF and ON docker-machine
+-------------------------------------
+docker-machine stop hyperv-vm-1
+docker-machine stop hyperv-vm-2
+docker-machine start hyperv-vm-1
+docker-machine start hyperv-vm-2
+
+Remove docker-machine (Turn off docker-machine on hyper-v manager for windows before executing this command, for MAC no extra steps are required)
+docker-machine rm -f <name-of-machine>
 
 *****************************************************************
 Docker - compose commands to follow (Common for MAC and Windows)
+Manual Reference: https://docs.docker.com/compose/reference/
 *****************************************************************
 Step-1 # Builds the image
 -------------------------------------------------------------------
 docker-compose build
-
 docker-compose build <service-name>
 
 #Builds and run the containers
@@ -15,13 +54,15 @@ docker-compose up --build -d
 
 Step-2 # View the image (All started and stopped containers)
 -------------------------------------------------------------------
-docker-compose ps 
 docker-compose ps -a
+docker-compose ps 
+
 
 Step-3 # Run the image in detached/non-detached mode (use -d) 
 -------------------------------------------------------------------
-docker-compose up
 docker-compose up -d
+docker-compose up
+
 
 Step-4 # View logs and Tail logs
 -------------------------------------------------------------------
@@ -52,23 +93,3 @@ docker-compose stop <service-name>
 
 #Stop and remove containers
 docker-compose down
-
-
-*****************************************************************
-Docker - machine: Windows
-*****************************************************************
-
-#Create a docker-machine with a virtual switch
-docker-machine create -d hyperv --hyperv-virtual-switch "VS-1" my-hyperv-vm
-
-#Verify if docker-machine is running on an IP
-docker-machine ls
-
-#Run the following command and whatever output you get run it again
-docker-machine env my-hyperv-vm
-
-#Run the output of the last line of the command which is there before.
- & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env my-hyperv-vm | Invoke-Expression
-
-#Verify the docker-machine is active.
-docker-machine ls
