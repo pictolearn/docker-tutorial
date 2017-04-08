@@ -1,9 +1,0 @@
-version: '2' #version of Docker-compose
-services:
-  mysql: # create an image by the name mysql
-    image: mysql # specify the image to download from docker hub
-    ports: ["3306:3306"] # expose ports to docker-machine
-    hostname: mysql  #specify the name of a host which can be used by a container running on the same docker machine
-    environment: # specify the password and default database to connect to, note that the default root user will be picked up.
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_DATABASE=Users
