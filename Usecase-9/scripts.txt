@@ -37,6 +37,10 @@ Step-5 # Login to the container
 docker-compose run <service-name> /bin/bash 
 
 Step-6 # Stops all containers related to the compose file
+-------------------------------------------------------------------
+Use a RESTFul Client to test the APIs
+
+Step-7 # Stops all containers related to the compose file
 --------------------------------------------------
 docker-compose stop
 
