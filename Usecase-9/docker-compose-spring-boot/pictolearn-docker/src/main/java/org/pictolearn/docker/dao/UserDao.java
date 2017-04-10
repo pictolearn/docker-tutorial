@@ -10,6 +10,12 @@ import org.pictolearn.docker.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+/**
+ * DAO with helper methods to interact with hibernate.
+ * 
+ * @author agane
+ *
+ */
 @Repository
 @Transactional
 public class UserDao {
@@ -37,7 +43,7 @@ public class UserDao {
   
   public User getByEmail(String email) {
     return (User) getSession().createQuery(
-        "from User where email = :email")
+        "from User where email like ':email")
         .setParameter("email", email)
         .uniqueResult();
   }

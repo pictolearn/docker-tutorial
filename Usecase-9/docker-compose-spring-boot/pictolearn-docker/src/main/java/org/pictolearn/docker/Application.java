@@ -10,6 +10,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
+/**
+ *  Spring boot startup
+ * @author agane
+ *
+ */
 @SpringBootApplication(scanBasePackages= {"org.pictolearn"})
 public class Application {
 	

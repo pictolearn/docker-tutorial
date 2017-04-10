@@ -1,19 +1,19 @@
-version: '3.1'
-services:
+version: '3.1' #version of Docker-compose
+services: #specifies 2 microservices "web" and "mysql"
   mysql:
-    image: mysql
-    ports: ["8888:3306"]
-    hostname: mysql
-    environment:
+    image: mysql # Expose a mysql image
+    ports: ["8888:3306"] # Expose port 8888
+    hostname: mysql # mysql hostname
+    environment: # root username and password
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=Users
-  web:
+  web: # Web microservice
     build: pictolearn-docker
     image: pictolearn-docker
-    ports: ["5555:8080"]
+    ports: ["5555:8080"] # expose port 5555 for the rest client to connect to
     hostname: web
     tty: true
-#    volumes:
+#    volumes: # you can include volumes, will be a TODO exercise
 #      - /Users/AGanesan/docker/docker-tutorial/resources/docker-compose-spring-boot/logs:/usr/local/pictolearn/logs
     depends_on:
       - mysql

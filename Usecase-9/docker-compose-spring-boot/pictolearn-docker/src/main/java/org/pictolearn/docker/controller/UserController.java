@@ -1,5 +1,8 @@
 package org.pictolearn.docker.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.pictolearn.docker.dao.UserDao;
@@ -33,16 +36,15 @@ public class UserController {
 		return SUCCESS;
 	}
 
-	@RequestMapping(value = "/find/{email}")
+	@RequestMapping(value = "/list")
 	@ResponseBody
-	public User getByEmail(@PathVariable("email") String email) {
+	public List<User> getAll() {
 		try {
-			User user = userDao.getByEmail(email);
-			return user;
+			return userDao.getAll();
 		} catch (Exception ex) {
-			logger.error("Error find the user by email : {} ", email,  ex);
-			return new User();
+			logger.error("List users", ex);
 		}
+		return new ArrayList<User>();
 	}
 
 	@RequestMapping(value = "/add")

@@ -10,7 +10,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
+/**
+ * The following class contains an id, email and name.
+ * @author agane
+ *
+ */
 @Entity
 @Table(name="users")
 public class User implements Serializable{
