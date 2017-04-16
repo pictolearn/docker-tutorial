@@ -12,17 +12,15 @@ docker-compose build <service-name>
 #Builds and run the containers
 docker-compose up --build -d
 
-Step-2 # View the image (All started and stopped containers)
--------------------------------------------------------------------
-docker-compose ps 
-
-
-Step-3 # Run the image in detached/non-detached mode (use -d) 
+Step-2 # Run the image in detached/non-detached mode (use -d) 
 -------------------------------------------------------------------
 docker-compose up -d
 docker-compose up
 docker-compose up -d <service-name>
 
+Step-3 # View the image (All started and stopped containers)
+-------------------------------------------------------------------
+docker-compose ps 
 
 Step-4 # View logs and Tail logs
 -------------------------------------------------------------------

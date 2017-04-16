@@ -27,20 +27,38 @@ public class UserDao {
     return _sessionFactory.getCurrentSession();
   }
   
+  /**
+   * Save the object to the db
+   * @param user
+   * @return
+   */
   public Long save(User user) {
     return (Long) getSession().save(user);
   }
   
+  /**
+   * delete the object
+   * @param user
+   */
   public void delete(User user) {
     getSession().delete(user);
     return;
   }
   
+  /**
+   * returns all the users
+   * @return
+   */
   @SuppressWarnings("unchecked")
   public List<User> getAll() {
     return getSession().createQuery("from User").list();
   }
   
+  /**
+   * find user by email
+   * @param email
+   * @return
+   */
   public User getByEmail(String email) {
     return (User) getSession().createQuery(
         "from User where email like ':email")
@@ -48,10 +66,19 @@ public class UserDao {
         .uniqueResult();
   }
 
+  /**
+   * find user by id
+   * @param id
+   * @return
+   */
   public User getById(long id) {
     return (User) getSession().load(User.class, id);
   }
 
+  /**
+   * Update user
+   * @param user
+   */
   public void update(User user) {
     getSession().update(user);
     return;
