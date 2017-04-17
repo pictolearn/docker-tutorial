@@ -1,1 +1,6 @@
+#Build the image.
 docker build -t my-java-docker .
+
+
+#Run the image
+docker run -itd --name my-java-docker-container my-java-docker:latest
