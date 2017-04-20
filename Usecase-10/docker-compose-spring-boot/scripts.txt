@@ -8,3 +8,34 @@ Step-2 # Docker machine activation
 -------------------------------------------------------------------
 docker-machine env hyperv-vm-1
 WINDOWS (Copy and execute the last line): # & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env hyperv-vm-1 | Invoke-Expression
+
+Step-3 # Run the image in detached/non-detached mode (use -d) 
+-------------------------------------------------------------------
+docker-compose up -d
+docker-compose up
+docker-compose up -d <service-name>
+
+docker-compose scale <service-name>=<total containers>
+Ex: docker-compose scale web=2
+
+Step-4 # View logs and Tail logs
+-------------------------------------------------------------------
+# View logs
+docker-compose logs <service-name>
+
+# Tail logs
+docker-compose  logs -ft <service-name>
+
+Step-5 # Login to the container
+-------------------------------------------------------------------
+docker-compose run <service-name> /bin/bash 
+
+Step-6 # Stops all containers related to the compose file
+--------------------------------------------------
+docker-compose stop
+
+#Stop and start specific container
+docker-compose stop <service-name>
+
+#Stop and remove containers
+docker-compose down
