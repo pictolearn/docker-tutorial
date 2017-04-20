@@ -44,6 +44,10 @@ public class ProxyServlet extends HttpServlet {
 
 	private static final Logger logger = LoggerFactory.getLogger(ProxyServlet.class);
 
+	/**
+	 * Applies only to GET REQUESTS. The following method picks up a random host with name as "web" as specified
+	 * in the docker-compose file with the service name as "web" when the web container scales up
+	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -60,6 +64,12 @@ public class ProxyServlet extends HttpServlet {
 		}
 		String ipAddress = getRandomIpAddress(response);
 
+		if(ipAddress == null) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.getWriter().println("No Hosts Found");
+			return;
+		}
+		
 		String url = "http://" + ipAddress + ":8080/" + path;
 		logger.debug("GET url :{} ", url);
 
@@ -70,6 +80,9 @@ public class ProxyServlet extends HttpServlet {
 		sendResponse(response, con);
 	}
 
+	/**
+	 * Applies only to POST REQUEST
+	 */
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -86,6 +99,12 @@ public class ProxyServlet extends HttpServlet {
 		}
 		String ipAddress = getRandomIpAddress(response);
 
+		if(ipAddress == null) {
+			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
+			response.getWriter().println("No Hosts Found");
+			return;
+		}
+		
 		response.addHeader("WEB-HOST", ipAddress);
 		String url = "http://" + ipAddress + ":8080/" + path;
 
@@ -169,19 +188,21 @@ public class ProxyServlet extends HttpServlet {
 			ipAddr.add(addr.getHostAddress());
 		}
 		int size = ipAddr.size();
-		if (size < 1) {
+		if (size == 0) {
 			logger.error("Size less than 1");
-			response.setStatus(HttpServletResponse.SC_BAD_GATEWAY);
-			response.getWriter().println("Server unavailable");
+			return null;
 		}
 
 		logger.debug("Total hosts : {} ", size);
 
 		int random = 0;
-		if (size > 1) {
+		if (size == 1) {
+			random = 0;
+		}else if (size > 1){
 			random = ThreadLocalRandom.current().nextInt(0, ipAddr.size() - 1);
 		}
 
+		logger.debug("Random : {} " , random );
 		String ipAddrStr = ipAddr.get(random);
 		logger.debug("Returned IP addr : {} ", ipAddrStr);
 		return ipAddrStr;
@@ -218,10 +239,9 @@ public class ProxyServlet extends HttpServlet {
 			while ((inputLine = in.readLine()) != null) {
 				stringOutput.append(inputLine);
 			}
-			logger.debug("Received response : {}  ", inputLine);
+			logger.debug("Received response : {}  ", stringOutput);
 			PrintWriter out = response.getWriter();
 			out.println(stringOutput.toString());
-			out.flush();
 		} else {
 			response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			response.getWriter().println("Internal Server Error");
