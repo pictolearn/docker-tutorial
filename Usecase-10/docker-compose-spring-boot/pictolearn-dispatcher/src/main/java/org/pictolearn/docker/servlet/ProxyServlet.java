@@ -20,7 +20,6 @@ import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletOutputStream;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,6 +31,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @WebServlet(urlPatterns = "/proxyServlet/*", loadOnStartup = 1)
+/**
+ * Servlet which queries the list of hostnames
+ * and reverse proxies the request to web layer
+ * 
+ * @author pictolearn
+ *
+ */
 public class ProxyServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 2787920473586060865L;
@@ -148,7 +154,8 @@ public class ProxyServlet extends HttpServlet {
 	}
 
 	/**
-	 * return random IP Address
+	 * return random IP Address. Note the host nane "web" which queries
+	 * all the hosts in the given docker-machine with the name web
 	 * 
 	 * @param response
 	 * @return
@@ -181,7 +188,7 @@ public class ProxyServlet extends HttpServlet {
 	}
 
 	/**
-	 * send response to client.
+	 * send response to client include all the headers and the response body
 	 * 
 	 * @param response
 	 * @param con

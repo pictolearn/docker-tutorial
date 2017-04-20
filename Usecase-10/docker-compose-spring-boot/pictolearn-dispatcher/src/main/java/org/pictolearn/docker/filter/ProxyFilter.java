@@ -15,6 +15,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @WebFilter(filterName="proxyFilter")
+/**
+ * This proxy filter forwards the request to a Proxy Servlet
+ * with the URI
+ * @author agane
+ *
+ */
 public class ProxyFilter implements Filter {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProxyFilter.class);

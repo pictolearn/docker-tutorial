@@ -1,20 +1,10 @@
-FROM ubuntu:16.04
-MAINTAINER pictolearn
+#Install from the same image built i usecase - 8
+FROM pictolearn/ubuntu-jdk8
 
-RUN apt-get update && apt-get install -y python-software-properties software-properties-common
-RUN add-apt-repository ppa:webupd8team/java
-
-RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
-
-RUN apt-get update && apt-get install -y oracle-java8-installer maven
-
-
+# add the directory to the path
 ADD . /usr/local/pictolearn
+
+# Run maven
 RUN cd /usr/local/pictolearn && mvn clean package
 
-ENV PICTOLEARN_HOME /usr/local/pictolearn
-
-#The WORKDIR instruction sets the working directory for any RUN, CMD, ENTRYPOINT, COPY and ADD instructions that follow it in the Dockerfile.
-WORKDIR /usr/local/pictolearn
-
-CMD ["/usr/local/pictolearn/waitFormysql.sh"]
+CMD ["java","-jar","-DlogPath=/usr/local/pictolearn","/usr/local/pictolearn/target/pictolearn-web-1.0.0-SNAPSHOT.jar"]

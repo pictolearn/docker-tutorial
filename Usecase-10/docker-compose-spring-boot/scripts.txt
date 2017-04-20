@@ -1,0 +1,10 @@
+*****************************************************************
+Step-1 # Run Powershell as administrator on WINDOWS or terminal on MAC
+-------------------------------------------------------------------
+docker-machine ps -a
+
+*****************************************************************
+Step-2 # Docker machine activation
+-------------------------------------------------------------------
+docker-machine env hyperv-vm-1
+WINDOWS (Copy and execute the last line): # & "C:\Program Files\Docker\Docker\Resources\bin\docker-machine.exe" env hyperv-vm-1 | Invoke-Expression
