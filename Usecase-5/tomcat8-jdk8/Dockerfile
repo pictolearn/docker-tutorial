@@ -1,3 +1,4 @@
+# Updated as of June 1, 2017
 # This file is used to create a docker image.
 # UBUNTU/CENTOS - > TOMCAT 8.x -> JDK 1.8 with all the updates, curl, vim
 FROM ubuntu:16.04
@@ -7,7 +8,7 @@ MAINTAINER pictolearn
 
 #Download the latest version of 8.5.x
 # Verify the version exists here or else change it: http://apache.mirrors.tds.net/tomcat/tomcat-8/
-ENV TOMCAT_VERSION 8.5.12
+ENV TOMCAT_VERSION 8.5.15
 
 # Run an update to get all the security patches
 RUN apt-get update && apt-get -y upgrade
@@ -16,11 +17,10 @@ RUN add-apt-repository ppa:webupd8team/java
 
 #The below instruction is very important, failing to add this will not allow you to install JDK
 # after the repository has been added.
-RUN apt-get update
+RUN apt-get -y update
 
 #Install curl/vim incase you want to debug. VIM - vi editor, curl is a utility which acts as http client which can be run from the unix prompt.
-RUN apt-get -y install curl
-RUN apt-get -y install vim
+RUN apt-get -y install curl vim
 
 # Accept the license
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections

@@ -1,3 +1,8 @@
+# Updated as of June 1, 2017
+# ----------------------------------------------------------------------------------
+# June 1, 2017: Oracle has archived JDK 7 and uses login to download JDK 7 hence
+# UBUNTU is unable to download JDK 7, we will hence demonstrate this with OPEN JDK 7
+#-----------------------------------------------------------------------------------
 # This file is used to create a docker image.
 # UBUNTU/CENTOS - > TOMCAT 7.x -> JDK 1.7 with all the updates, curl, vim
 FROM ubuntu:16.04
@@ -6,30 +11,37 @@ FROM ubuntu:16.04
 MAINTAINER pictolearn
 
 #Download the latest version of 7.x
-# Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.76
+#Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
+ENV TOMCAT_VERSION 7.0.78
 
 # Run an update to get all the security patches
-RUN apt-get update && apt-get -y upgrade
+RUN apt-get -y update && apt-get -y upgrade
 
 #Install curl/vim incase you want to debug. VIM - vi editor, curl is a utility which acts as http client which can be run from the unix prompt.
 RUN apt-get -y install software-properties-common
-RUN add-apt-repository ppa:webupd8team/java
 
+# June 1, 2017 : Commented out Oracle JDK installation procedure
+# RUN add-apt-repository ppa:webupd8team/java
 #The below instruction is very important, failing to add this will not allow you to install JDK
 # after the repository has been added.
-RUN apt-get update
+# RUN apt-get -y update
 
+# June 1, 2017 : Moved all installation packages to a single line
 #Install CURL and VIM editors
-RUN apt-get -y install curl
-RUN apt-get -y install vim
+RUN apt-get -y install curl wget vim
 
+# June 1, 2017 : Commented out Oracle JDK installation procedure
 # Accept the license
-RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
-RUN apt-get -y install oracle-java7-installer
-
+# RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
+# RUN apt-get -y install oracle-java7-installer
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+# ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+
+# June 1, 2017: Added OPEN JDK Installation 
+RUN add-apt-repository ppa:openjdk-r/ppa  
+RUN apt-get update -y
+RUN apt-get install -y openjdk-7-jdk 
+ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 # Get Tomcat
 # notice that i can add the same RUN command across multiple lines
