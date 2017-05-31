@@ -1,10 +1,10 @@
-#FROM specified which image i want to download
+# Updated as of June 1, 2017
+# FROM specified which image i want to download
 # Needs to be provided before any other section of code.
 FROM httpd:latest
 
 #Author of the Docker File
 MAINTAINER Pictolearn
-
 
 # Copy the following directory
 COPY pictolearn-sample/ /usr/local/apache2/htdocs/pictolearn
