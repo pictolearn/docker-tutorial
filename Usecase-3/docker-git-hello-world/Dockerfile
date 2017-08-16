@@ -1,4 +1,4 @@
-# Updated as of June 1, 2017
+# Updated as of Aug 16, 2017
 # Install FROM UBUNTU IMAGE
 FROM ubuntu:16.04
 

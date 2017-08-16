@@ -1,4 +1,4 @@
-# Updated as of June 1, 2017
+# Updated as of Aug 16, 2017
 # ----------------------------------------------------------------------------------
 # June 1, 2017: Oracle has archived JDK 7 and uses login to download JDK 7 hence
 # UBUNTU is unable to download JDK 7, we will hence demonstrate this with OPEN JDK 7
@@ -12,7 +12,7 @@ MAINTAINER pictolearn
 
 #Download the latest version of 7.x
 #Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.78
+ENV TOMCAT_VERSION 7.0.79
 
 # Run an update to get all the security patches
 RUN apt-get -y update && apt-get -y upgrade

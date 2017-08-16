@@ -1,4 +1,4 @@
-# Updated as of June 1, 2017
+# Updated as of Aug 16, 2017
 # FROM specified which image i want to download
 # Needs to be provided before any other section of code.
 FROM nginx:1.10

@@ -1,4 +1,4 @@
-# Updated as of June 1, 2017
+# Updated as of Aug 16, 2017
 # This file is used to create a docker image.
 # UBUNTU/CENTOS - > TOMCAT 8.x -> JDK 1.8 with all the updates, curl, vim
 FROM ubuntu:16.04
@@ -8,7 +8,7 @@ MAINTAINER pictolearn
 
 #Download the latest version of 8.5.x
 # Verify the version exists here or else change it: http://apache.mirrors.tds.net/tomcat/tomcat-8/
-ENV TOMCAT_VERSION 8.5.15
+ENV TOMCAT_VERSION 8.5.20
 
 # Run an update to get all the security patches
 RUN apt-get update && apt-get -y upgrade
