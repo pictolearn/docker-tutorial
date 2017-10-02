@@ -134,3 +134,18 @@ docker-compose down
 docker-compose rm -f
 docker-compose pull
 docker-compose up --build -d
+
+# How to find the disk space used by docker
+docker system df
+du -sch /var/lib/docker/containers
+du -c /var/lib/docker/ | head -15 | sort -rn
+
+# cleaning up old containers and images from docker and release resources
+docker rm $(docker ps -qa --no-trunc --filter "status=exited")
+docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+docker rmi $(docker images | grep "none" | awk '/ / { print $3 }')
+docker volume rm $(docker volume ls -qf dangling=true)
+docker volume ls -qf dangling=true | xargs -r docker volume rm
+docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
+docker network prune
+docker system prune
