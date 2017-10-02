@@ -149,3 +149,4 @@ docker volume ls -qf dangling=true | xargs -r docker volume rm
 docker network rm $(docker network ls | grep "bridge" | awk '/ / { print $1 }')
 docker network prune
 docker system prune
+docker system prune -af
