@@ -36,7 +36,8 @@ public class MySQLConnection {
 				connected = true;
 			} catch (Exception e) {
 				System.err.println("Error connecting to database");
-				Thread.sleep(1000);
+				e.printStackTrace();
+				Thread.sleep(5000);
 			}
 		}
 
