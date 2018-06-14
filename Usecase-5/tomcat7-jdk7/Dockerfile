@@ -12,7 +12,7 @@ MAINTAINER pictolearn
 
 #Download the latest version of 7.x
 #Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.79
+ENV TOMCAT_VERSION 7.0.88
 
 # Run an update to get all the security patches
 RUN apt-get -y update && apt-get -y upgrade
