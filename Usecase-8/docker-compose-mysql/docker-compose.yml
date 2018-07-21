@@ -1,7 +1,7 @@
 version: '3.1' #version of Docker-compose
 services: #Specifies the micro-service you want to run
   db: # create an image by the name mysql
-    # NOTE: As of 2018 this has been updated to use the version of mysql 5.7.22  
+    # NOTE: As of June, 2018 this has been updated to use the version of mysql 5.7.22  
     image: mysql:5.7.22 # specify the image to download from docker hub, 
     ports: ["3306:3306"] # expose ports to docker-machine , same as the EXPOSE command
     hostname: db  #specify the name of a host which can be used by a container running on the same docker machine

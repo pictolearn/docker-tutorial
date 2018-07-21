@@ -1,6 +1,9 @@
 FROM pictolearn/ubuntu-jdk8
 
-MAINTAINER pictolearn
+#Author of the Docker File
+# MAINTAINER Pictolearn Note: MAINTAINER has been deprecated for LABEL, 
+# LABEL is a key value pair 
+LABEL "Maintainer"="Pictolearn"
 
 ADD . /usr/local/docker-mysql-connector
 RUN cd /usr/local/docker-mysql-connector && mvn assembly:assembly

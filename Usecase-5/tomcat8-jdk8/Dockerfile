@@ -24,7 +24,8 @@ RUN apt-get -y install curl vim
 
 # Accept the license
 RUN echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
-RUN apt-get -y install oracle-java8-installer
+RUN apt-get -y install oracle-java8-installer 
+RUN apt-get -y install maven lsof
 
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle

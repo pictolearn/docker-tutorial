@@ -1,7 +1,8 @@
 version: '3.1' #version of Docker-compose
 services: #specifies 2 microservices "web" and "mysql"
   mysql:
-    image: mysql # Expose a mysql image
+    # NOTE: As of June, 2018 this has been updated to use the version of mysql 5.7.22  
+    image: mysql:5.7.22 # Expose a mysql image
     ports: ["8888:3306"] # Expose port 8888
     hostname: mysql # mysql hostname
     environment: # root username and password

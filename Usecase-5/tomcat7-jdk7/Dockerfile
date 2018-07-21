@@ -7,8 +7,10 @@
 # UBUNTU/CENTOS - > TOMCAT 7.x -> JDK 1.7 with all the updates, curl, vim
 FROM ubuntu:16.04
 
-#Author of the file
-MAINTAINER pictolearn
+#Author of the Docker File
+# MAINTAINER Pictolearn Note: MAINTAINER has been deprecated for LABEL, 
+# LABEL is a key value pair 
+LABEL "Maintainer"="Pictolearn"
 
 #Download the latest version of 7.x
 #Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
