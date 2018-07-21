@@ -12,7 +12,12 @@ docker images
 Step 3: Create a repository on github for tomcat-7-jdk7
 -------------------------------------------------------------------
 
-Step 4: Verify image creation and push it into Docker Hub ()
+Step 4: Verify image creation and push it into Docker Hub 
+# In my case i did 
+# docker login
+# docker tag tomcat7-jdk7-image:latest pictolearn/tomcat7-jdk7:latest
+# docker push pictolearn/tomcat7-jdk7:latest
+
 -------------------------------------------------------------------
 docker login 
 docker tag <currentimage>:<tag> <repository-name>/<image-name>:<tag>

@@ -13,6 +13,11 @@ Step 3: Create a repository on github for tomcat-8-jdk8
 -------------------------------------------------------------------
 
 Step 4: Verify image creation and push it into Docker Hub
+# In my case i did 
+# docker login
+# docker tag tomcat8-jdk8-image:latest pictolearn/tomcat8-jdk8:latest
+# docker push pictolearn/tomcat8-jdk8:latest
+
 -------------------------------------------------------------------
 docker login 
 docker tag <currentimage>:<tag> <repository-name>/<image-name>:<tag>
