@@ -1,9 +1,9 @@
 version: '3.1'
 services:
   mysql:
-    image: mysql
+    image: mysql:5.7.22
     ports: ["8888:3306"]
-    hostname: mysql:5.7.22
+    hostname: mysql
     environment:
         - MYSQL_ROOT_PASSWORD=root
         - MYSQL_DATABASE=Users
