@@ -1,7 +1,9 @@
 # Updated as of Aug 16, 2017
 # FROM specified which image i want to download
 # Needs to be provided before any other section of code.
-FROM nginx:1.10
+#FROM nginx:1.10
+#FROM nginx:1.15
+FROM nginx:latest
 
 #Author of the Docker File
 MAINTAINER Pictolearn
@@ -10,4 +12,4 @@ MAINTAINER Pictolearn
 COPY default.conf /etc/nginx/conf.d/
 
 # Copy the following directory
-COPY pictolearn-sample/ /usr/share/nginx/html/pictolearn 
+COPY pictolearn-sample/ /usr/share/nginx/html/pictolearn
