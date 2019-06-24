@@ -34,7 +34,7 @@ RUN apt-get install -y openjdk-8-jdk
 RUN apt-get -y install maven lsof
 
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
 # Get Tomcat
 # notice that i can add the same RUN command across multiple lines

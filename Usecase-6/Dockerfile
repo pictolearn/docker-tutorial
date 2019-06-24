@@ -1,7 +1,7 @@
 # This file is used to create a docker image.
 # The image name created in the previous use case.
-FROM pictolearn/tomcat7-jdk7
-#FROM pictolearn/tomcat8-jdk8
+#FROM pictolearn/tomcat7-jdk7
+FROM pictolearn/tomcat8-jdk8
 
 
 # Add deployment
@@ -26,6 +26,10 @@ WORKDIR /opt/tomcat
 
 # Launch Tomcat
 CMD ["/opt/tomcat/bin/catalina.sh", "run"]
+
+# Used for debugging in case something does not work and the container fails to start up because of the CMD instruction specified above.
+#ENTRYPOINT ["/bin/sh", "-c", "while true; do sleep 1; done"]
+
 
 # Added for debugging in case image does not get built
 # Install supervisor by commenting out that piece and make sure
