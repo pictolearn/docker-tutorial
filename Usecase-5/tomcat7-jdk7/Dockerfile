@@ -14,7 +14,7 @@ LABEL "Maintainer"="Pictolearn"
 
 #Download the latest version of 7.x
 #Verify the version exists here or else change it: http://apache.rediris.es/tomcat/tomcat-7
-ENV TOMCAT_VERSION 7.0.90
+ENV TOMCAT_VERSION 7.0.94
 
 # Run an update to get all the security patches
 RUN apt-get -y update && apt-get -y upgrade
@@ -46,7 +46,8 @@ RUN apt-get install -y openjdk-7-jdk
 ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-amd64
 
 # Get Tomcat
-# notice that i can add the same RUN command across multiple lines
+# notice that i can add the same RUN command across multiple lines. This is done for Performance optimization
+# and does not create too many layers in the image. Use this format if you would like for better maintenance.
 RUN wget --quiet --no-cookies http://apache.rediris.es/tomcat/tomcat-7/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz -O /tmp/tomcat.tgz && \
 tar xzvf /tmp/tomcat.tgz -C /opt && \
 mv /opt/apache-tomcat-${TOMCAT_VERSION} /opt/tomcat && \
