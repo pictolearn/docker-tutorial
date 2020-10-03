@@ -77,8 +77,8 @@ Use case 7 : Create an image from a container
 Use case 8 : Using Docker machine 
 Use case 9 : Microservices with docker-compose 
 
-                a. Create a simple microservice with nginx- AngularJS2, Spring-MVC-Hibernate-MYSQL and spawn a container with docker-compose.
-                b. Display remote debugging inside the container.
-                c. Hot deploy a container.
+            a. Create a simple microservice with nginx- AngularJS2, Spring-MVC-Hibernate-MYSQL and spawn a container with docker-compose.
+            b. Display remote debugging inside the container.
+            c. Hot deploy a container.
 
 Use case 10 : Introduction to docker swarm and how to run clusters using docker
